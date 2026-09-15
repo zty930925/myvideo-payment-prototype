@@ -424,6 +424,265 @@
     .section-title{display:block}
     .section-title p{margin-top:6px}
   }
+
+  /* ===== v11 Readability & Viewing Comfort Audit ===== */
+
+  /* 1. Global reading rhythm */
+  body{
+    line-height:1.72;
+  }
+  p{
+    text-wrap:pretty;
+  }
+
+  /* 2. Hero: release the pressure between the two lines */
+  h1{
+    line-height:1.16;
+    margin:20px 0 22px;
+    letter-spacing:-.012em;
+  }
+  h1 span{
+    display:block;
+  }
+  h1 span + span{
+    margin-top:.16em;
+  }
+  .hero p{
+    line-height:1.78;
+    max-width:720px;
+  }
+  .hero-actions{
+    margin-top:30px;
+    gap:14px;
+  }
+
+  /* 3. Section rhythm: more breathing room between content groups */
+  .section{
+    padding:42px 0;
+  }
+  .section-title{
+    margin-bottom:22px;
+    align-items:flex-end;
+  }
+  .section-title h2{
+    line-height:1.32;
+  }
+  .section-title p{
+    line-height:1.72;
+    max-width:700px;
+  }
+
+  /* 4. Cards: avoid dense text blocks */
+  .mode-card{
+    padding:26px;
+  }
+  .mode-card h3{
+    line-height:1.35;
+    margin:14px 0 8px;
+  }
+  .mode-card p{
+    line-height:1.72;
+    margin-bottom:20px;
+  }
+
+  .panel{
+    padding:28px;
+  }
+
+  .plan{
+    padding:22px;
+  }
+  .plan h4{
+    line-height:1.4;
+  }
+  .plan ul{
+    line-height:1.72;
+    padding-left:20px;
+  }
+  .plan li + li{
+    margin-top:5px;
+  }
+
+  /* 5. Form / decision modules */
+  .question h3{
+    line-height:1.35;
+  }
+  .question p{
+    line-height:1.72;
+  }
+  .option{
+    padding:17px 18px;
+    line-height:1.58;
+  }
+  .option strong{
+    line-height:1.4;
+    margin-bottom:5px;
+  }
+
+  .result-card{
+    padding:24px;
+  }
+  .result-card p{
+    line-height:1.72;
+  }
+  .metric{
+    padding:12px 0;
+  }
+
+  /* 6. Step 4 content decision area */
+  .content-card{
+    padding:20px;
+  }
+  .poster{
+    line-height:1.28;
+  }
+  .content-flow{
+    line-height:1.5;
+    gap:11px;
+    padding:15px 17px;
+  }
+  .state-box{
+    padding:16px 17px;
+  }
+  .decision-summary{
+    padding:16px 17px;
+  }
+  .decision-summary p{
+    line-height:1.7;
+  }
+  .watch-option{
+    padding:16px;
+  }
+  .watch-option small{
+    display:block;
+    line-height:1.6;
+    margin-top:4px;
+  }
+  .mvp-note{
+    line-height:1.68;
+    padding:14px 15px;
+  }
+
+  /* 7. Supplemental blocks */
+  .support-card{
+    padding:24px;
+  }
+  .support-card p,
+  .support-detail,
+  .logic-note{
+    line-height:1.72;
+  }
+  .support-item{
+    padding:13px 15px;
+  }
+
+  /* 8. Buttons: comfortable hit target and less cramped labels */
+  button{
+    min-height:44px;
+  }
+  .primary,.ghost{
+    line-height:1.25;
+  }
+
+  /* 9. Focus visibility for keyboard users */
+  button:focus-visible{
+    outline:3px solid rgba(229,138,71,.52);
+    outline-offset:3px;
+  }
+
+  /* 10. Motion comfort */
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{
+      scroll-behavior:auto !important;
+      animation-duration:.001ms !important;
+      animation-iteration-count:1 !important;
+      transition-duration:.001ms !important;
+    }
+  }
+
+  /* 11. Tablet */
+  @media (max-width:920px){
+    .hero{
+      padding-top:68px;
+    }
+    .section{
+      padding:36px 0;
+    }
+    .panel{
+      padding:22px;
+    }
+  }
+
+  /* 12. Mobile: prevent oversized headings and dense cards */
+  @media (max-width:640px){
+    body{
+      line-height:1.68;
+    }
+    .hero{
+      padding:54px 0 30px;
+    }
+    h1{
+      font-size:clamp(34px,10vw,42px);
+      line-height:1.18;
+      margin:16px 0 20px;
+    }
+    h1 span + span{
+      margin-top:.2em;
+    }
+    .hero p{
+      font-size:16px;
+      line-height:1.72;
+    }
+    .hero-actions{
+      margin-top:24px;
+    }
+    .hero-actions button{
+      width:100%;
+    }
+    .section{
+      padding:32px 0;
+    }
+    .section-title{
+      margin-bottom:18px;
+    }
+    .section-title h2{
+      font-size:27px;
+      line-height:1.36;
+    }
+    .section-title p{
+      margin-top:8px;
+      font-size:15px;
+    }
+    .mode-card,
+    .plan,
+    .support-card{
+      padding:20px;
+    }
+    .panel{
+      padding:18px;
+      border-radius:22px;
+    }
+    .poster{
+      min-height:190px;
+      padding:20px;
+      font-size:29px;
+    }
+    .content-card{
+      padding:15px;
+    }
+    .content-flow{
+      padding:13px;
+    }
+    .content-flow b{
+      display:none;
+    }
+    .content-flow span{
+      width:100%;
+      text-align:center;
+    }
+  }
+
 </style>
 </head>
 <body>
@@ -442,7 +701,7 @@
   <section class="hero">
     <div class="wrap">
       <span class="eyebrow">Prototype / 付費決策引導</span>
-      <h1>先決定「怎麼看」<br>再決定「怎麼付」</h1>
+      <h1><span>先決定「怎麼看」</span><span>再決定「怎麼付」</span></h1>
       <p>
         不用先記住所有方案名稱。MyVideo 的付費邏輯先分成
         <strong>訂閱、租借、購買</strong> 三種觀看方式，再依觀看頻率與內容需求選方案。
