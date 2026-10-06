@@ -1,0 +1,14 @@
+{
+  "name": "myvideo-payment-prototype-fullstack",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Full-stack MVP for the MyVideo plan and viewing-rights helper prototype.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

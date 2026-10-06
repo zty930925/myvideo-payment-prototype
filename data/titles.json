@@ -1,0 +1,118 @@
+[
+  {
+    "id": "mock-001",
+    "title": "今晚想看的電影",
+    "aliases": [
+      "示意作品",
+      "今晚想看的電影"
+    ],
+    "available": true,
+    "subscriptionIncluded": true,
+    "rental": {
+      "available": true,
+      "price": 79,
+      "durationHours": 48
+    },
+    "fourPickEligible": true,
+    "digitalPurchase": false,
+    "mock": true,
+    "contentType": "vod",
+    "channelIncluded": false
+  },
+  {
+    "id": "mock-002",
+    "title": "蜘蛛人：無家日",
+    "aliases": [
+      "蜘蛛人無家日",
+      "Spider-Man: No Way Home",
+      "spider man no way home"
+    ],
+    "available": true,
+    "subscriptionIncluded": false,
+    "rental": {
+      "available": true,
+      "price": 79,
+      "durationHours": 48
+    },
+    "fourPickEligible": false,
+    "digitalPurchase": true,
+    "mock": true,
+    "contentType": "vod",
+    "channelIncluded": false
+  },
+  {
+    "id": "mock-003",
+    "title": "月租片庫示意劇集",
+    "aliases": [
+      "示意劇集",
+      "月租劇集"
+    ],
+    "available": true,
+    "subscriptionIncluded": true,
+    "rental": {
+      "available": false
+    },
+    "fourPickEligible": false,
+    "digitalPurchase": false,
+    "mock": true,
+    "contentType": "vod",
+    "channelIncluded": false
+  },
+  {
+    "id": "mock-004",
+    "title": "自由選示意電影",
+    "aliases": [
+      "自由選電影",
+      "四片自由選電影"
+    ],
+    "available": true,
+    "subscriptionIncluded": false,
+    "rental": {
+      "available": true,
+      "price": 69,
+      "durationHours": 48
+    },
+    "fourPickEligible": true,
+    "digitalPurchase": false,
+    "mock": true,
+    "contentType": "vod",
+    "channelIncluded": false
+  },
+  {
+    "id": "mock-005",
+    "title": "未上架示意作品",
+    "aliases": [
+      "找不到的電影",
+      "未上架作品"
+    ],
+    "available": false,
+    "subscriptionIncluded": false,
+    "rental": {
+      "available": false
+    },
+    "fourPickEligible": false,
+    "digitalPurchase": false,
+    "mock": true,
+    "contentType": "vod",
+    "channelIncluded": false
+  },
+  {
+    "id": "mock-channel-001",
+    "title": "體育頻道示意內容",
+    "aliases": [
+      "示意體育頻道",
+      "示意賽事",
+      "體育頻道"
+    ],
+    "available": true,
+    "contentType": "channel",
+    "subscriptionIncluded": false,
+    "channelIncluded": true,
+    "rental": {
+      "available": false
+    },
+    "fourPickEligible": false,
+    "digitalPurchase": false,
+    "mock": true
+  }
+]

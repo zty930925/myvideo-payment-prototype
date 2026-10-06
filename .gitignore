@@ -1,10 +1,4 @@
-# macOS
+node_modules/
+.env
 .DS_Store
-
-# Editor
-.vscode/
-.idea/
-
-# Temporary
-*.tmp
-*.log
+npm-debug.log*

@@ -1,0 +1,95 @@
+[
+  {
+    "id": "luxury_annual",
+    "family": "luxury_subscription",
+    "name": "返利黑卡・年訂",
+    "type": "subscription",
+    "price": 1780,
+    "days": 365,
+    "description": "豪華月租隨選影音年訂；官方頁標示返利回饋、年度生日禮與不定期驚喜。",
+    "source": "official_screenshot_2026-10-06",
+    "mock": false
+  },
+  {
+    "id": "luxury_quarterly",
+    "family": "luxury_subscription",
+    "name": "豪華月租・季訂",
+    "type": "subscription",
+    "price": 550,
+    "days": 90,
+    "description": "豪華月租隨選影音季訂。",
+    "source": "official_screenshot_2026-10-06",
+    "mock": false
+  },
+  {
+    "id": "luxury_monthly",
+    "family": "luxury_subscription",
+    "name": "豪華月租・月訂",
+    "type": "subscription",
+    "price": 250,
+    "days": 30,
+    "description": "豪華月租隨選影音月訂。",
+    "source": "official_screenshot_2026-10-06",
+    "mock": false
+  },
+  {
+    "id": "channel_annual",
+    "family": "channel_subscription",
+    "name": "頻道訂閱・年訂",
+    "type": "subscription",
+    "price": 1320,
+    "days": 365,
+    "description": "精彩賽事、即時新聞與多元娛樂頻道內容。",
+    "source": "official_screenshot_2026-10-06",
+    "mock": false
+  },
+  {
+    "id": "channel_quarterly",
+    "family": "channel_subscription",
+    "name": "頻道訂閱・季訂",
+    "type": "subscription",
+    "price": 360,
+    "days": 90,
+    "description": "精彩賽事、即時新聞與多元娛樂頻道內容。",
+    "source": "official_screenshot_2026-10-06",
+    "mock": false
+  },
+  {
+    "id": "channel_monthly",
+    "family": "channel_subscription",
+    "name": "頻道訂閱・月訂",
+    "type": "subscription",
+    "price": 128,
+    "days": 30,
+    "description": "精彩賽事、即時新聞與多元娛樂頻道內容。",
+    "source": "official_screenshot_2026-10-06",
+    "mock": false
+  },
+  {
+    "id": "four",
+    "family": "rental",
+    "name": "4 片自由選",
+    "type": "rental_credit",
+    "price": 250,
+    "days": 30,
+    "description": "每月 4 部 HD 高畫質指定租借電影任選（不含搶先版）。",
+    "source": "official_member_page",
+    "mock": false
+  },
+  {
+    "id": "single_rental",
+    "family": "rental",
+    "name": "單片租借",
+    "type": "single_transaction",
+    "description": "依作品顯示實際價格與觀看期限。",
+    "mock": true
+  },
+  {
+    "id": "digital_purchase",
+    "family": "purchase",
+    "name": "數位珍藏",
+    "type": "single_transaction",
+    "description": "依作品授權提供數位購買。",
+    "mock": true
+  }
+]

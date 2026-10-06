@@ -24,7 +24,7 @@
     --radius:24px;
   }
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;scroll-padding-top:104px}
   body{
     margin:0;
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
@@ -683,6 +683,1049 @@
     }
   }
 
+
+  /* ===== Floating Actions / MyVideo 小幫手 ===== */
+  .floating-actions{
+    position:fixed;
+    right:24px;
+    bottom:24px;
+    z-index:60;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    gap:12px;
+  }
+  .float-btn{
+    width:64px;
+    height:64px;
+    min-height:64px;
+    padding:0;
+    border:1px solid rgba(239,228,213,.14);
+    color:var(--text);
+    background:rgba(24,19,16,.92);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    box-shadow:0 14px 34px rgba(0,0,0,.28);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:.2s ease;
+  }
+  .float-btn:hover{
+    transform:translateY(-2px) scale(1.02);
+    border-color:rgba(216,117,47,.52);
+  }
+  .float-btn svg{
+    width:28px;
+    height:28px;
+    display:block;
+  }
+  .float-btn.helper{
+    background:linear-gradient(135deg,var(--orange),var(--orange-2));
+    color:#fff;
+    border-color:rgba(255,255,255,.08);
+  }
+  .float-btn.top{
+    color:var(--paper);
+  }
+
+  .helper-overlay{
+    position:fixed;
+    inset:0;
+    z-index:80;
+    background:rgba(5,4,3,.62);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+  }
+  .helper-overlay.open{display:flex}
+
+  .helper-modal{
+    width:min(760px,100%);
+    max-height:min(86vh,820px);
+    overflow:auto;
+    border-radius:28px;
+    background:
+      radial-gradient(circle at 80% 0%,rgba(216,117,47,.12),transparent 26%),
+      linear-gradient(180deg,#211a16,#15110e);
+    border:1px solid rgba(239,228,213,.12);
+    box-shadow:0 30px 90px rgba(0,0,0,.48);
+    padding:26px;
+  }
+  .helper-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:18px;
+    margin-bottom:20px;
+  }
+  .helper-head h3{
+    margin:0;
+    font-size:28px;
+    line-height:1.3;
+  }
+  .helper-head p{
+    margin:6px 0 0;
+    color:var(--muted);
+    line-height:1.65;
+  }
+  .helper-close{
+    width:42px;
+    height:42px;
+    min-height:42px;
+    border-radius:50%;
+    border:1px solid rgba(239,228,213,.12);
+    background:rgba(239,228,213,.06);
+    color:var(--text);
+    font-size:20px;
+  }
+
+  .helper-step{
+    margin-top:18px;
+  }
+  .helper-step-label{
+    display:block;
+    font-weight:900;
+    margin-bottom:9px;
+  }
+  .member-options{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+  }
+  .member-option{
+    border:1px solid rgba(239,228,213,.11);
+    background:#2a211b;
+    color:var(--text);
+    border-radius:16px;
+    padding:13px 12px;
+    font-weight:800;
+    text-align:center;
+  }
+  .member-option.active{
+    border-color:var(--orange);
+    background:rgba(216,117,47,.13);
+    box-shadow:0 0 0 1px rgba(216,117,47,.45) inset;
+  }
+
+  .helper-input-wrap{
+    border:1px solid rgba(239,228,213,.11);
+    background:rgba(10,8,7,.46);
+    border-radius:18px;
+    padding:14px;
+  }
+  .helper-textarea{
+    width:100%;
+    resize:vertical;
+    min-height:110px;
+    border:0;
+    outline:0;
+    background:transparent;
+    color:var(--text);
+    font:inherit;
+    line-height:1.65;
+  }
+  .helper-textarea::placeholder{color:#9f907f}
+
+  .helper-tools{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    align-items:center;
+    margin-top:10px;
+  }
+  .upload-label{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:42px;
+    padding:0 14px;
+    border-radius:999px;
+    border:1px solid rgba(239,228,213,.12);
+    background:rgba(239,228,213,.055);
+    font-weight:800;
+    cursor:pointer;
+  }
+  .upload-label input{display:none}
+  .image-preview{
+    display:none;
+    align-items:center;
+    gap:10px;
+    width:max-content;
+    max-width:min(260px,100%);
+    margin:8px 52px 0;
+    padding:7px 9px 7px 7px;
+    border-radius:14px;
+    border:1px solid rgba(239,228,213,.12);
+    background:#1d1713;
+    box-shadow:0 8px 18px rgba(0,0,0,.12);
+  }
+  .image-preview.open{display:flex}
+  .image-preview img{
+    width:52px;
+    height:52px;
+    flex:0 0 52px;
+    object-fit:cover;
+    border-radius:10px;
+    background:#111;
+  }
+  .image-preview-meta{
+    min-width:0;
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+  }
+  .image-preview small{
+    display:block;
+    padding:0;
+    color:var(--text);
+    font-size:12px;
+    line-height:1.35;
+    max-width:145px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .image-preview-hint{
+    color:var(--muted);
+    font-size:11px;
+    line-height:1.3;
+  }
+  .image-remove{
+    width:26px;
+    height:26px;
+    min-height:26px;
+    flex:0 0 26px;
+    border-radius:50%;
+    border:1px solid rgba(239,228,213,.10);
+    background:rgba(239,228,213,.05);
+    color:var(--muted);
+    display:grid;
+    place-items:center;
+    cursor:pointer;
+    font-size:15px;
+    line-height:1;
+  }
+  .image-remove:hover{
+    color:#fff;
+    border-color:rgba(216,117,47,.38);
+  }
+
+  .chat-image-attachment{
+    width:132px;
+    max-width:100%;
+    margin-bottom:7px;
+    border-radius:12px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.14);
+    background:#111;
+  }
+  .chat-image-attachment img{
+    display:block;
+    width:100%;
+    max-height:168px;
+    object-fit:cover;
+  }
+
+  .helper-quick{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-top:12px;
+  }
+  .quick-chip{
+    border:1px solid rgba(239,228,213,.10);
+    background:#2b221c;
+    color:var(--text);
+    border-radius:999px;
+    min-height:38px;
+    padding:0 12px;
+    font-size:13px;
+    font-weight:800;
+  }
+
+  .helper-submit{
+    width:100%;
+    margin-top:14px;
+    min-height:48px;
+    border:0;
+    border-radius:999px;
+    background:linear-gradient(135deg,var(--orange),var(--orange-2));
+    color:#fff;
+    font-weight:900;
+    box-shadow:0 12px 26px rgba(216,117,47,.20);
+  }
+
+  .helper-result{
+    display:none;
+    margin-top:18px;
+    border-radius:18px;
+    border:1px solid rgba(239,228,213,.10);
+    background:#1c1713;
+    padding:16px;
+  }
+  .helper-result.open{display:block}
+  .helper-result .result-title{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-weight:900;
+    margin-bottom:7px;
+  }
+  .helper-result p{
+    margin:0;
+    color:#ded2c4;
+    line-height:1.72;
+  }
+  .helper-result .result-meta{
+    margin-top:10px;
+    padding-top:10px;
+    border-top:1px solid rgba(239,228,213,.08);
+    color:var(--muted);
+    font-size:13px;
+  }
+
+  @media (max-width:640px){
+    .floating-actions{
+      right:14px;
+      bottom:14px;
+    }
+    .float-btn{
+      width:58px;
+      height:58px;
+      min-height:58px;
+    }
+    .helper-overlay{
+      padding:10px;
+      align-items:flex-end;
+    }
+    .helper-modal{
+      width:100%;
+      max-height:92vh;
+      border-radius:24px 24px 18px 18px;
+      padding:20px;
+    }
+    .member-options{
+      grid-template-columns:1fr;
+    }
+  }
+
+
+  /* ===== v14 Chatbot panel ===== */
+  .helper-overlay{
+    position:fixed;
+    inset:auto 24px 98px auto;
+    z-index:80;
+    width:min(380px,calc(100vw - 32px));
+    height:min(620px,calc(100vh - 140px));
+    background:transparent;
+    backdrop-filter:none;
+    -webkit-backdrop-filter:none;
+    display:block;
+    padding:0;
+    pointer-events:none;
+  }
+  .helper-overlay.open{display:block;pointer-events:auto}
+  .helper-modal{
+    width:100%;
+    height:100%;
+    max-height:none;
+    overflow:hidden;
+    border-radius:24px;
+    background:
+      radial-gradient(circle at 90% 0%,rgba(216,117,47,.10),transparent 28%),
+      linear-gradient(180deg,#211a16,#15110e);
+    border:1px solid rgba(239,228,213,.12);
+    box-shadow:0 26px 70px rgba(0,0,0,.44);
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    opacity:0;
+    transform:translateY(16px) scale(.96);
+    transform-origin:bottom right;
+    transition:opacity .22s ease, transform .22s ease;
+  }
+  .helper-overlay.open .helper-modal{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+  .helper-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+    margin:0;
+    padding:18px 18px 14px;
+    border-bottom:1px solid rgba(239,228,213,.08);
+    background:rgba(20,16,13,.72);
+  }
+  .helper-head h3{font-size:19px;line-height:1.3}
+  .helper-close{
+    width:36px;height:36px;min-height:36px;font-size:18px;
+  }
+  .helper-chat-body{
+    flex:1;
+    overflow-y:auto;
+    padding:18px 18px 20px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .chat-row{display:flex;gap:10px;align-items:flex-end}
+  .chat-row.bot{justify-content:flex-start}
+  .chat-row.user{justify-content:flex-end}
+  .chat-avatar{
+    width:32px;height:32px;flex:0 0 32px;border-radius:50%;
+    display:grid;place-items:center;
+    background:linear-gradient(135deg,var(--orange),var(--orange-2));
+    color:#fff;
+    box-shadow:0 8px 18px rgba(216,117,47,.20);
+  }
+  .chat-avatar svg{width:18px;height:18px}
+  .chat-bubble{
+    max-width:80%;
+    border-radius:18px;
+    padding:11px 13px;
+    line-height:1.58;
+    font-size:14px;
+    border:1px solid rgba(239,228,213,.08);
+  }
+  .chat-row.bot .chat-bubble{background:#251e19;color:var(--text);border-bottom-left-radius:6px}
+  .chat-row.user .chat-bubble{background:linear-gradient(135deg,var(--orange),var(--orange-2));color:#fff;border-color:transparent;border-bottom-right-radius:6px}
+  .chat-section-card{
+    border:1px solid rgba(239,228,213,.09);
+    border-radius:16px;
+    padding:12px;
+    background:#1b1612;
+  }
+  .chat-section-card .helper-step{margin-top:0}
+  .chat-section-card .helper-step-label{font-size:13px;margin-bottom:8px}
+  .member-options{grid-template-columns:1fr;gap:8px}
+  .member-option{padding:10px 11px;border-radius:13px;text-align:left}
+  .helper-input-wrap{
+    border:0;background:transparent;border-radius:0;padding:0;
+  }
+  .helper-textarea{
+    min-height:76px;
+    max-height:120px;
+    background:#18130f;
+    border:1px solid rgba(239,228,213,.10);
+    border-radius:14px;
+    padding:11px 12px;
+  }
+  .helper-tools{margin-top:8px}
+  .upload-label{min-height:38px;font-size:13px;padding:0 12px}
+  .helper-quick{margin-top:10px;gap:6px}
+  .quick-chip{min-height:34px;font-size:12px;padding:0 10px}
+  .helper-submit{min-height:44px;margin-top:10px}
+  .helper-result{
+    margin-top:0;
+    background:transparent;
+    border:0;
+    padding:0;
+  }
+  .helper-result.open{display:block}
+  .helper-result .result-title{font-size:13px;margin-bottom:5px;color:#f1c397}
+  .helper-result p{font-size:14px;line-height:1.62}
+  .helper-result .result-meta{font-size:12px}
+  .helper-composer{
+    padding:16px 16px 18px;
+    border-top:1px solid rgba(239,228,213,.08);
+    background:rgba(16,13,10,.86);
+  }
+  @media (max-width:640px){
+    .helper-overlay{
+      inset:auto 10px 84px 10px;
+      width:auto;
+      height:min(72vh,620px);
+    }
+    .helper-modal{border-radius:22px}
+  }
+
+
+
+  .chat-plan-options{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    margin:0 0 4px 42px;
+  }
+  .chat-plan-options button{
+    min-height:42px;
+    padding:10px 12px;
+    border-radius:14px;
+    border:1px solid rgba(239,228,213,.10);
+    background:#201a16;
+    color:var(--text);
+    text-align:left;
+    font-weight:800;
+    line-height:1.4;
+  }
+  .chat-plan-options button:hover{
+    border-color:rgba(216,117,47,.46);
+    background:#261e18;
+  }
+  .chat-plan-options button.selected{
+    border-color:var(--orange);
+    background:rgba(216,117,47,.12);
+  }
+  .chat-question-stage[hidden],
+  .helper-bottom-suggestions[hidden]{
+    display:none !important;
+  }
+
+  /* ===== v15 Suggested questions ===== */
+  .chat-suggestion-intro{
+    margin:2px 0 0 42px;
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.5;
+  }
+  .chat-suggestion-list{
+    display:grid;
+    gap:8px;
+    margin:0 0 2px 42px;
+  }
+  .chat-suggestion-btn{
+    width:100%;
+    min-height:44px;
+    border-radius:14px;
+    border:1px solid rgba(239,228,213,.10);
+    background:#201a16;
+    color:var(--text);
+    text-align:left;
+    padding:11px 13px;
+    font-size:13px;
+    font-weight:800;
+    line-height:1.5;
+    box-shadow:0 8px 18px rgba(0,0,0,.10);
+    transition:.18s ease;
+  }
+  .chat-suggestion-btn:hover{
+    transform:translateY(-1px);
+    border-color:rgba(216,117,47,.46);
+    background:#261e18;
+  }
+  .chat-suggestion-btn:active{transform:translateY(0)}
+
+  .helper-bottom-suggestions{
+    display:flex;
+    gap:7px;
+    overflow-x:auto;
+    padding:10px 14px 0;
+    scrollbar-width:none;
+  }
+  .helper-bottom-suggestions::-webkit-scrollbar{display:none}
+  .helper-bottom-suggestions button{
+    flex:0 0 auto;
+    min-height:34px;
+    border-radius:999px;
+    border:1px solid rgba(239,228,213,.10);
+    background:#211a16;
+    color:#d9ccbc;
+    padding:0 11px;
+    font-size:12px;
+    font-weight:800;
+    white-space:nowrap;
+  }
+  .helper-bottom-suggestions button:hover{
+    border-color:rgba(216,117,47,.42);
+    color:#fff;
+  }
+  .helper-composer{
+    padding-top:16px;
+  }
+  .helper-composer-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .helper-composer-row .helper-textarea{
+    flex:1;
+    min-height:50px;
+    max-height:112px;
+    resize:none;
+    padding:13px 14px;
+  }
+  .helper-send-icon,
+  .helper-upload-icon{
+    width:34px;
+    height:34px;
+    min-height:34px;
+    flex:0 0 34px;
+    border:0;
+    border-radius:0;
+    background:transparent;
+    color:#d9ccbc;
+    display:grid;
+    place-items:center;
+    padding:0;
+    box-shadow:none;
+    cursor:pointer;
+    transition:color .18s ease, transform .18s ease;
+  }
+  .helper-send-icon:hover,
+  .helper-upload-icon:hover{
+    color:var(--orange-2);
+    transform:translateY(-1px);
+  }
+  .helper-send-icon svg,
+  .helper-upload-icon svg{
+    width:21px;
+    height:21px;
+  }
+  .helper-upload-icon input{display:none}
+  .helper-composer-note{
+    margin:10px 44px 0 44px;
+    color:#8f8172;
+    font-size:11px;
+    line-height:1.4;
+  }
+  .chat-typing{
+    display:inline-flex;
+    gap:4px;
+    align-items:center;
+    min-height:12px;
+  }
+  .chat-typing i{
+    width:5px;height:5px;border-radius:50%;background:#bcae9d;
+    animation:chatTyping 1s infinite ease-in-out;
+  }
+  .chat-typing i:nth-child(2){animation-delay:.14s}
+  .chat-typing i:nth-child(3){animation-delay:.28s}
+  @keyframes chatTyping{
+    0%,60%,100%{opacity:.35;transform:translateY(0)}
+    30%{opacity:1;transform:translateY(-3px)}
+  }
+  @media (max-width:640px){
+    .chat-suggestion-list,.chat-suggestion-intro,.chat-plan-options{margin-left:0}
+    .chat-plan-options{grid-template-columns:1fr}
+    .helper-composer-note{margin-left:0;margin-right:0}
+    .image-preview{margin-left:52px;margin-right:52px;max-width:calc(100% - 104px)}
+  }
+
+
+  /* ===== v19 Navigation / Section Visibility Audit ===== */
+  .section{
+    scroll-margin-top:104px;
+    padding-top:48px;
+    padding-bottom:48px;
+  }
+  .section-title{
+    scroll-margin-top:104px;
+  }
+  .plan{
+    scroll-margin-top:116px;
+  }
+
+  .action-btn:disabled{
+    opacity:.42;
+    cursor:not-allowed;
+    filter:saturate(.55);
+  }
+
+  /* Non-blocking feedback instead of browser alert() */
+  .prototype-toast{
+    position:fixed;
+    left:50%;
+    bottom:28px;
+    transform:translate(-50%,18px);
+    z-index:120;
+    width:min(520px,calc(100% - 32px));
+    padding:15px 17px;
+    border-radius:17px;
+    background:rgba(27,22,18,.96);
+    border:1px solid rgba(239,228,213,.13);
+    box-shadow:0 18px 50px rgba(0,0,0,.36);
+    color:var(--text);
+    opacity:0;
+    pointer-events:none;
+    transition:.22s ease;
+  }
+  .prototype-toast.show{
+    opacity:1;
+    transform:translate(-50%,0);
+  }
+  .prototype-toast strong{
+    display:block;
+    color:#f1c397;
+    margin-bottom:2px;
+  }
+  .prototype-toast span{
+    display:block;
+    color:#d7cabb;
+    font-size:14px;
+    line-height:1.55;
+  }
+
+  @media (max-width:640px){
+    html{scroll-padding-top:88px}
+    .section,
+    .section-title{scroll-margin-top:88px}
+    .plan{scroll-margin-top:96px}
+    .section{
+      padding-top:36px;
+      padding-bottom:36px;
+    }
+  }
+
+
+  .api-status{
+    display:inline-flex;align-items:center;gap:6px;margin-top:7px;color:var(--muted);font-size:11px;line-height:1.3
+  }
+  .api-status::before{content:"";width:7px;height:7px;border-radius:50%;background:#9a8b79}
+  .api-status.online::before{background:#79b982}
+  .api-status.offline::before{background:#df7a69}
+  .chat-row.typing .chat-bubble{color:var(--muted);font-size:13px}
+
+
+  /* ===== Current subscription families: Luxury VOD / Channel ===== */
+  .subscription-family-switch{
+    display:inline-flex;
+    gap:6px;
+    padding:5px;
+    margin:0 0 20px;
+    border-radius:999px;
+    background:#17120f;
+    border:1px solid rgba(239,228,213,.10);
+  }
+  .subscription-family-btn{
+    min-height:40px;
+    border:0;
+    border-radius:999px;
+    padding:8px 16px;
+    background:transparent;
+    color:var(--muted);
+    font-weight:900;
+  }
+  .subscription-family-btn.active{
+    background:var(--paper);
+    color:var(--ink);
+  }
+  .subscription-family-panel[hidden]{display:none!important}
+  .subscription-family-intro{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-bottom:18px;
+  }
+  .subscription-family-intro > div{
+    padding:15px 16px;
+    border-radius:16px;
+    border:1px solid rgba(239,228,213,.09);
+    background:rgba(239,228,213,.035);
+  }
+  .subscription-family-intro strong{display:block;color:var(--paper);margin-bottom:3px}
+  .subscription-family-intro span{display:block;color:var(--muted);font-size:14px;line-height:1.58}
+  .plan-grid.three{grid-template-columns:repeat(3,1fr)}
+  .subscription-compare{
+    margin-top:18px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+  }
+  .subscription-compare-card{
+    border-radius:17px;
+    border:1px solid rgba(239,228,213,.09);
+    background:#1a1511;
+    padding:16px;
+  }
+  .subscription-compare-card strong{display:block;color:#f1c397;margin-bottom:6px}
+  .subscription-compare-card ul{margin:0;padding-left:19px;color:#d6c8b8;font-size:14px;line-height:1.7}
+  @media(max-width:920px){
+    .plan-grid.three,.subscription-family-intro,.subscription-compare{grid-template-columns:1fr}
+  }
+  @media(max-width:640px){
+    .subscription-family-switch{display:flex;width:100%}
+    .subscription-family-btn{flex:1;padding-left:10px;padding-right:10px}
+  }
+
+
+  /* ===== v3 Focused work-detail decision prototype ===== */
+  .detail-flow{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin:0 0 18px;
+    padding:14px 16px;
+    border:1px solid rgba(239,228,213,.09);
+    border-radius:16px;
+    background:rgba(18,14,12,.70);
+  }
+  .detail-flow span{
+    padding:7px 11px;
+    border-radius:999px;
+    background:rgba(239,228,213,.07);
+    color:#ddd1c2;
+    font-size:13px;
+    font-weight:800;
+  }
+  .detail-flow b{color:var(--orange)}
+
+  .movie-detail-demo{
+    border:1px solid rgba(239,228,213,.10);
+    border-radius:28px;
+    background:
+      radial-gradient(circle at 18% 0%,rgba(216,117,47,.08),transparent 26%),
+      linear-gradient(180deg,#211b17,#15110e);
+    box-shadow:0 24px 60px rgba(0,0,0,.26);
+    overflow:hidden;
+  }
+  .movie-detail-head{
+    display:grid;
+    grid-template-columns:112px 1fr;
+    gap:22px;
+    align-items:center;
+    padding:26px;
+    border-bottom:1px solid rgba(239,228,213,.08);
+  }
+  .movie-poster{
+    width:112px;
+    aspect-ratio:2/3;
+    object-fit:cover;
+    border-radius:14px;
+    box-shadow:0 16px 34px rgba(0,0,0,.30);
+  }
+  .movie-detail-copy h3{
+    margin:6px 0 8px;
+    font-size:34px;
+    line-height:1.2;
+  }
+  .movie-detail-copy p{
+    margin:0;
+    max-width:760px;
+    color:var(--muted);
+    line-height:1.7;
+  }
+  .prototype-label,.column-kicker,.oneoff-type{
+    color:#f0b77f;
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:.04em;
+  }
+  .movie-capabilities{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:14px;
+  }
+  .movie-capabilities span{
+    padding:6px 9px;
+    border-radius:999px;
+    background:rgba(216,117,47,.10);
+    border:1px solid rgba(216,117,47,.22);
+    color:#e9c6a5;
+    font-size:12px;
+    font-weight:800;
+  }
+
+  .entitlement-simulator{
+    display:grid;
+    grid-template-columns:minmax(190px,.65fr) 1.35fr;
+    gap:18px;
+    padding:22px 26px;
+    border-bottom:1px solid rgba(239,228,213,.07);
+  }
+  .entitlement-simulator strong{display:block;font-size:17px}
+  .entitlement-simulator p{margin:4px 0 0;color:var(--muted);font-size:13px}
+  .detail-state-buttons{
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:8px;
+    flex-wrap:wrap;
+  }
+  .detail-state-btn{
+    border:1px solid rgba(239,228,213,.11);
+    background:#2a221c;
+    color:var(--text);
+    border-radius:999px;
+    padding:9px 13px;
+    min-height:42px;
+    font-weight:800;
+  }
+  .detail-state-btn.active{
+    background:var(--paper);
+    color:var(--ink);
+    border-color:var(--paper);
+  }
+
+  .detail-decision{
+    margin:22px 26px 0;
+    padding:18px;
+    border-radius:18px;
+    background:rgba(216,117,47,.09);
+    border:1px solid rgba(216,117,47,.26);
+  }
+  .decision-eyebrow{
+    color:#f0b77f;
+    font-size:12px;
+    font-weight:900;
+    margin-bottom:5px;
+  }
+  .decision-main{
+    display:flex;
+    gap:18px;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .decision-main strong{
+    display:block;
+    font-size:20px;
+    line-height:1.4;
+  }
+  .decision-main p{
+    margin:5px 0 0;
+    color:#d7cabb;
+    line-height:1.65;
+  }
+  .detail-primary-cta{
+    white-space:nowrap;
+    flex:0 0 auto;
+  }
+
+  .payment-layout{
+    display:grid;
+    grid-template-columns:1.06fr .94fr;
+    gap:18px;
+    padding:22px 26px 26px;
+  }
+  .payment-column{
+    border:1px solid rgba(239,228,213,.09);
+    border-radius:22px;
+    background:rgba(239,228,213,.035);
+    padding:20px;
+    min-width:0;
+  }
+  .payment-column.highlighted{
+    border-color:rgba(216,117,47,.62);
+    box-shadow:0 0 0 1px rgba(216,117,47,.18) inset,0 18px 36px rgba(216,117,47,.08);
+  }
+  .payment-column-head{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:16px;
+    margin-bottom:15px;
+  }
+  .payment-column-head h4{
+    margin:3px 0 0;
+    font-size:25px;
+  }
+  .payment-column-head p{
+    margin:2px 0 0;
+    max-width:330px;
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.6;
+    text-align:right;
+  }
+
+  .detail-plan-list,.oneoff-list{
+    display:grid;
+    gap:10px;
+  }
+  .detail-plan-row,.oneoff-row{
+    width:100%;
+    border:1px solid rgba(239,228,213,.08);
+    border-radius:16px;
+    background:#2a231e;
+    color:var(--text);
+    padding:15px 16px;
+    min-height:86px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    text-align:left;
+    transition:.18s ease;
+  }
+  .detail-plan-row:hover,.oneoff-row:hover{
+    transform:translateY(-2px);
+    border-color:rgba(216,117,47,.42);
+    background:#30271f;
+  }
+  .detail-plan-row.best{
+    border-color:rgba(216,117,47,.48);
+  }
+  .detail-plan-row strong,.oneoff-row strong{
+    display:block;
+    font-size:16px;
+    line-height:1.4;
+  }
+  .detail-plan-row span,.oneoff-row small{
+    display:block;
+    color:var(--muted);
+    font-size:12px;
+    margin-top:4px;
+    line-height:1.5;
+  }
+  .detail-price,.oneoff-price{
+    white-space:nowrap;
+    font-size:22px;
+    font-weight:900;
+  }
+  .detail-price small,.oneoff-price small{
+    display:inline;
+    color:var(--muted);
+    font-size:12px;
+    font-weight:700;
+  }
+  .oneoff-row{
+    min-height:116px;
+  }
+  .oneoff-note{
+    margin-top:12px;
+    padding:13px 14px;
+    border-radius:14px;
+    background:#18130f;
+    border:1px dashed rgba(239,228,213,.12);
+  }
+  .oneoff-note strong{font-size:13px}
+  .oneoff-note p{margin:4px 0 0;color:var(--muted);font-size:12px;line-height:1.6}
+
+  .detail-principle{
+    margin:0 26px 26px;
+    padding:13px 15px;
+    border-radius:14px;
+    background:rgba(239,228,213,.045);
+    border:1px solid rgba(239,228,213,.07);
+    color:#cdbfae;
+    font-size:13px;
+    line-height:1.7;
+  }
+  .detail-principle strong{color:#edbd90}
+
+  @media(max-width:900px){
+    .entitlement-simulator,.payment-layout{grid-template-columns:1fr}
+    .detail-state-buttons{justify-content:flex-start}
+    .payment-column-head{display:block}
+    .payment-column-head p{text-align:left;max-width:none;margin-top:7px}
+  }
+  @media(max-width:640px){
+    .movie-detail-head{grid-template-columns:76px 1fr;padding:18px;gap:14px}
+    .movie-poster{width:76px;border-radius:11px}
+    .movie-detail-copy h3{font-size:27px}
+    .entitlement-simulator{padding:18px}
+    .detail-state-buttons{display:grid;grid-template-columns:1fr 1fr}
+    .detail-state-btn{border-radius:14px}
+    .detail-decision{margin:18px 18px 0}
+    .decision-main{display:block}
+    .detail-primary-cta{width:100%;margin-top:14px}
+    .payment-layout{padding:18px}
+    .payment-column{padding:16px}
+    .detail-plan-row,.oneoff-row{align-items:flex-start}
+    .detail-price,.oneoff-price{font-size:19px}
+    .detail-principle{margin:0 18px 18px}
+    .detail-flow b{display:none}
+    .detail-flow span{width:100%;text-align:center}
+  }
+
 </style>
 </head>
 <body>
@@ -691,8 +1734,8 @@
   <div class="wrap nav">
     <div class="brand"><div class="brand-mark">M</div>MyVideo 方案小幫手</div>
     <div class="nav-right">
-      <button class="ghost" onclick="document.querySelector('#logic').scrollIntoView()">先看付費邏輯</button>
-      <button class="primary" onclick="document.querySelector('#advisor').scrollIntoView()">幫我選方案</button>
+      <button class="ghost" onclick="scrollToSection('#logic')">先看付費邏輯</button>
+      <button class="primary" onclick="scrollToSection('#advisor')">幫我選方案</button>
     </div>
   </div>
 </header>
@@ -707,8 +1750,8 @@
         <strong>訂閱、租借、購買</strong> 三種觀看方式，再依觀看頻率與內容需求選方案。
       </p>
       <div class="hero-actions">
-        <button class="primary" onclick="document.querySelector('#advisor').scrollIntoView()">30 秒找適合我的方案</button>
-        <button class="ghost" onclick="document.querySelector('#plans').scrollIntoView()">直接比較方案</button>
+        <button class="primary" onclick="scrollToSection('#advisor')">30 秒找適合我的方案</button>
+        <button class="ghost" onclick="scrollToSection('#plans')">直接比較方案</button>
       </div>
     </div>
   </section>
@@ -717,7 +1760,7 @@
     <div class="wrap">
       <div class="section-title">
         <div>
-          <h2>第一步：先理解 3 種觀看方式</h2>
+          <h2>MyVideo 三種觀看方式一覽</h2>
           <p>把「觀看權益」與「付款週期」拆開，降低新用戶理解成本。</p>
         </div>
       </div>
@@ -725,8 +1768,8 @@
         <button class="mode-card active" data-mode-target="sub" type="button" aria-pressed="true">
           <div class="mode-icon">∞</div>
           <h3>訂閱</h3>
-          <p>固定週期付費，觀看月租片庫。適合常追劇、常看片的使用者。</p>
-          <span class="pill">核心概念：買片庫</span>
+          <p>固定週期付費取得內容權益，可選擇「豪華月租」的隨選影音，或「頻道訂閱」的賽事、新聞與娛樂頻道。</p>
+          <span class="pill">核心概念：固定週期取得內容權益</span>
         </button>
         <button class="mode-card" data-mode-target="rent" type="button" aria-pressed="false">
           <div class="mode-icon">48h</div>
@@ -748,7 +1791,7 @@
     <div class="wrap">
       <div class="section-title">
         <div>
-          <h2>第二步：再比較方案</h2>
+          <h2>方案內容與價格比較</h2>
           <p>把「方案」放回對應觀看方式，不讓不同邏輯的選項全部混在一起。</p>
         </div>
       </div>
@@ -761,55 +1804,113 @@
         </div>
 
         <div id="sub" class="tab-content">
-          <div class="plan-grid">
-            <article class="plan" data-plan-key="monthly">
-              <h4>豪華月租・月訂</h4>
-              <div class="price">$250 <small>/ 30 天</small></div>
-              <div class="subprice">適合：第一次使用、先試看看</div>
-              <ul>
-                <li>月租片庫觀看</li>
-                <li>彈性高，短期使用</li>
-                <li>平均約 $250 / 月</li>
-              </ul>
-              <button class="select" onclick="choosePlan('豪華月租・月訂','$250 / 30 天')">選這個</button>
-            </article>
+          <div class="subscription-family-switch" aria-label="訂閱方案類型">
+            <button class="subscription-family-btn active" type="button" data-sub-family="luxury">豪華月租</button>
+            <button class="subscription-family-btn" type="button" data-sub-family="channel">頻道訂閱</button>
+          </div>
 
-            <article class="plan reco" data-plan-key="quarterly">
-              <span class="ribbon">平衡推薦</span>
-              <h4>豪華月租・季訂</h4>
-              <div class="price">$550 <small>/ 90 天</small></div>
-              <div class="subprice">平均約 $184 / 月</div>
-              <ul>
-                <li>月租片庫觀看</li>
-                <li>適合連續追劇 2–3 個月</li>
-                <li>比月訂平均成本低</li>
-              </ul>
-              <button class="select" onclick="choosePlan('豪華月租・季訂','$550 / 90 天')">選這個</button>
-            </article>
+          <div class="subscription-family-intro">
+            <div>
+              <strong>豪華月租｜隨選影音</strong>
+              <span>電影、戲劇、動漫、兒童、節目等隨選內容看到飽；官方方案頁另標示綠標除外。</span>
+            </div>
+            <div>
+              <strong>頻道訂閱｜頻道服務</strong>
+              <span>以精彩賽事、即時新聞與多元娛樂頻道為主，適合有固定頻道觀看需求的使用者。</span>
+            </div>
+          </div>
 
-            <article class="plan" data-plan-key="annual">
-              <h4>返利黑卡・年訂</h4>
-              <div class="price">$1,780 <small>/ 365 天</small></div>
-              <div class="subprice">平均約 $148 / 月</div>
-              <ul>
-                <li>適合長期固定觀看</li>
-                <li>年度方案成本最低</li>
-                <li>可再搭配返利權益</li>
-              </ul>
-              <button class="select" onclick="choosePlan('返利黑卡・年訂','$1,780 / 365 天')">選這個</button>
-            </article>
+          <div class="subscription-family-panel" data-sub-panel="luxury">
+            <div class="plan-grid three">
+              <article class="plan reco" data-plan-key="annual">
+                <span class="ribbon">推薦</span>
+                <h4>返利黑卡・年訂</h4>
+                <div class="price">$1,780 <small>/ 365 天</small></div>
+                <div class="subprice">官方頁標示：低於 6 折</div>
+                <ul>
+                  <li>豪華月租隨選影音內容</li>
+                  <li>返利回饋</li>
+                  <li>年度生日禮 + 不定期驚喜</li>
+                </ul>
+                <button class="select" onclick="choosePlan('返利黑卡・年訂','$1,780 / 365 天')">選這個</button>
+              </article>
 
-            <article class="plan" data-plan-key="advisor">
-              <h4>不確定？</h4>
-              <div class="price">30 秒 <small>快速評估</small></div>
-              <div class="subprice">依看片頻率與偏好推薦</div>
-              <ul>
-                <li>不需自己算價格</li>
-                <li>比較訂閱 / 租借 / 購買</li>
-                <li>提供推薦理由</li>
-              </ul>
-              <button class="select" onclick="document.querySelector('#advisor').scrollIntoView()">幫我選</button>
-            </article>
+              <article class="plan" data-plan-key="quarterly">
+                <h4>豪華月租・季訂</h4>
+                <div class="price">$550 <small>/ 90 天</small></div>
+                <div class="subprice">平均每月約 $184</div>
+                <ul>
+                  <li>豪華月租隨選影音內容</li>
+                  <li>適合連續使用 2–3 個月</li>
+                  <li>兼顧價格與彈性</li>
+                </ul>
+                <button class="select" onclick="choosePlan('豪華月租・季訂','$550 / 90 天')">選這個</button>
+              </article>
+
+              <article class="plan" data-plan-key="monthly">
+                <h4>豪華月租・月訂</h4>
+                <div class="price">$250 <small>/ 30 天</small></div>
+                <div class="subprice">官方頁標示：小資首選</div>
+                <ul>
+                  <li>豪華月租隨選影音內容</li>
+                  <li>週期短、彈性高</li>
+                  <li>適合初次使用或短期觀看</li>
+                </ul>
+                <button class="select" onclick="choosePlan('豪華月租・月訂','$250 / 30 天')">選這個</button>
+              </article>
+            </div>
+          </div>
+
+          <div class="subscription-family-panel" data-sub-panel="channel" hidden>
+            <div class="plan-grid three">
+              <article class="plan reco" data-plan-key="channel-annual">
+                <span class="ribbon">最推薦</span>
+                <h4>頻道訂閱・年訂</h4>
+                <div class="price">$1,320 <small>/ 365 天</small></div>
+                <div class="subprice">精彩賽事・即時新聞・多元娛樂</div>
+                <ul>
+                  <li>頻道內容暢看</li>
+                  <li>裝置共享</li>
+                  <li>無平台插播廣告</li>
+                </ul>
+                <button class="select" onclick="choosePlan('頻道訂閱・年訂','$1,320 / 365 天')">選這個</button>
+              </article>
+
+              <article class="plan" data-plan-key="channel-quarterly">
+                <h4>頻道訂閱・季訂</h4>
+                <div class="price">$360 <small>/ 90 天</small></div>
+                <div class="subprice">頻道觀看需求的中期選擇</div>
+                <ul>
+                  <li>精彩賽事與即時新聞</li>
+                  <li>多元娛樂頻道</li>
+                  <li>裝置共享、無平台插播廣告</li>
+                </ul>
+                <button class="select" onclick="choosePlan('頻道訂閱・季訂','$360 / 90 天')">選這個</button>
+              </article>
+
+              <article class="plan" data-plan-key="channel-monthly">
+                <h4>頻道訂閱・月訂</h4>
+                <div class="price">$128 <small>/ 30 天</small></div>
+                <div class="subprice">短期賽事 / 新聞 / 頻道觀看</div>
+                <ul>
+                  <li>週期短、進入門檻最低</li>
+                  <li>適合先體驗頻道服務</li>
+                  <li>裝置共享、無平台插播廣告</li>
+                </ul>
+                <button class="select" onclick="choosePlan('頻道訂閱・月訂','$128 / 30 天')">選這個</button>
+              </article>
+            </div>
+          </div>
+
+          <div class="subscription-compare">
+            <div class="subscription-compare-card">
+              <strong>豪華月租適合誰？</strong>
+              <ul><li>主要想看電影、戲劇、動漫、兒童與節目等隨選內容</li><li>官方頁標示享綠標影片租借折扣</li></ul>
+            </div>
+            <div class="subscription-compare-card">
+              <strong>頻道訂閱適合誰？</strong>
+              <ul><li>主要想看賽事、即時新聞與娛樂頻道</li><li>與豪華月租是不同的訂閱內容範圍</li></ul>
+            </div>
           </div>
         </div>
 
@@ -834,7 +1935,7 @@
               <div class="subprice">授權與觀看期限依內容不同</div>
               <ul>
                 <li>只付現在想看的內容</li>
-                <li>常見 48 小時 / 72 小時 / 30 天</li>
+                <li>觀看期限依作品與授權條件顯示</li>
                 <li>適合每月只看 1–2 部</li>
               </ul>
               <button class="select" onclick="choosePlan('單片租借','依作品計價')">選這個</button>
@@ -860,12 +1961,12 @@
 
         <div class="compare-row">
           <div>
-            <strong>這個設計刻意把「豪華月租」與「4 片自由選」拆開</strong>
-            <span>前者是買片庫，後者是買 4 次租借額度，避免同樣 $250 / 30 天造成誤解。</span>
+            <strong>先分清「訂閱內容」再比較週期</strong>
+            <span>豪華月租是隨選影音；頻道訂閱是賽事、新聞與娛樂頻道。兩者同為訂閱制，但內容權益不同。</span>
           </div>
           <div>
-            <strong>平台幫你算</strong>
-            <span>直接顯示平均月成本 / 平均每部成本，不需要使用者自行計算。</span>
+            <strong>不同觀看方式不要混在一起</strong>
+            <span>4 片自由選仍屬租借額度；單片租借與數位珍藏則是作品層級交易。</span>
           </div>
           <div>
             <strong>先看內容，再做決策</strong>
@@ -881,7 +1982,7 @@
     <div class="wrap">
       <div class="section-title">
         <div>
-          <h2>補充：付款工具與會員權益</h2>
+          <h2>會員權益與付款工具</h2>
           <p>這兩者會影響付款與優惠，但不屬於「訂閱 / 租借 / 購買」三種觀看方式。</p>
         </div>
       </div>
@@ -922,16 +2023,16 @@
 
           <div class="support-list">
             <div class="support-item">
-              <span>付費會員</span>
-              <strong>完整月租權益 + 租借優惠</strong>
+              <span>豪華月租</span>
+              <strong>隨選內容 + 綠標租借折扣</strong>
             </div>
             <div class="support-item">
-              <span>體驗會員</span>
-              <strong>體驗期間使用部分付費權益</strong>
+              <span>頻道訂閱</span>
+              <strong>賽事 / 新聞 / 娛樂頻道內容</strong>
             </div>
             <div class="support-item">
-              <span>免費會員</span>
-              <strong>以免費內容 / 基本功能為主</strong>
+              <span>共通權益</span>
+              <strong>裝置共享 / 無平台插播廣告</strong>
             </div>
           </div>
 
@@ -939,7 +2040,7 @@
             <button class="ghost" onclick="toggleSupport('memberDetail')">查看會員差異</button>
           </div>
           <div class="support-detail" id="memberDetail">
-            MVP 呈現方式：只有在使用者需要判斷「我現在能不能直接看 / 是否有優惠」時顯示會員身分，不把會員等級混進方案比較頁，避免增加理解負擔。
+            MVP 呈現方式：將豪華月租與頻道訂閱視為不同的內容權益，不因兩者都叫「訂閱」就合併判斷；作品 / 頻道層級查詢時，再依使用者實際持有權益決定可否觀看。
           </div>
         </article>
       </div>
@@ -955,7 +2056,7 @@
     <div class="wrap">
       <div class="section-title">
         <div>
-          <h2>第三步：用互動幫使用者做決策</h2>
+          <h2>個人化方案推薦</h2>
           <p>簡單問 3 題，將「複雜方案比較」轉成「符合我使用情境的建議」。</p>
         </div>
       </div>
@@ -967,34 +2068,35 @@
           </div>
 
           <div class="question active" data-q="1">
-            <h3>你一個月大概會看幾部內容？</h3>
-            <p>看片頻率會影響「單片付費」還是「固定方案」比較划算。</p>
+            <h3>你使用 MyVideo 的頻率大概如何？</h3>
+            <p>使用頻率會影響單次付費、短期訂閱或長期訂閱哪個更適合。</p>
             <div class="option-grid">
-              <button class="option" data-value="low"><strong>1–2 部</strong>偶爾看片</button>
-              <button class="option" data-value="mid"><strong>3–4 部</strong>每週大概看一部</button>
-              <button class="option" data-value="high"><strong>5 部以上</strong>經常看片 / 追劇</button>
+              <button class="option" data-value="low"><strong>偶爾使用</strong>有想看的內容才打開</button>
+              <button class="option" data-value="mid"><strong>每週使用</strong>一週大約使用 1–2 次</button>
+              <button class="option" data-value="high"><strong>經常使用</strong>固定追內容或頻道</button>
               <button class="option" data-value="daily"><strong>幾乎每天</strong>高頻使用</button>
             </div>
           </div>
 
           <div class="question" data-q="2">
             <h3>你主要想看哪一種？</h3>
-            <p>內容偏好會決定你需要「片庫」還是「特定電影租借」。</p>
+            <p>內容偏好會先決定你適合「豪華月租」、「頻道訂閱」或作品層級交易。</p>
             <div class="option-grid">
-              <button class="option" data-value="series"><strong>戲劇 / 動漫 / 綜藝</strong>會持續追內容</button>
+              <button class="option" data-value="series"><strong>電影 / 戲劇 / 動漫 / 節目</strong>以隨選影音為主</button>
+              <button class="option" data-value="channel"><strong>賽事 / 新聞 / 娛樂頻道</strong>以頻道內容為主</button>
               <button class="option" data-value="movie"><strong>特定電影</strong>有想看的片才打開 MyVideo</button>
-              <button class="option" data-value="mixed"><strong>都會看</strong>電影與劇集都有需求</button>
               <button class="option" data-value="family"><strong>兒童 / 家庭</strong>多人、固定觀看</button>
             </div>
           </div>
 
           <div class="question" data-q="3">
-            <h3>你會重複觀看同一部作品嗎？</h3>
-            <p>如果很常重看，單片購買可能比反覆租借更合理。</p>
+            <h3>你比較偏好哪種付費彈性？</h3>
+            <p>最後用付費偏好決定月訂、季訂、年訂，或作品層級交易。</p>
             <div class="option-grid">
-              <button class="option" data-value="no"><strong>不太會</strong>看完通常就換下一部</button>
-              <button class="option" data-value="sometimes"><strong>偶爾會</strong>喜歡的內容會重看</button>
-              <button class="option" data-value="yes"><strong>會</strong>有收藏與重看的需求</button>
+              <button class="option" data-value="flexible"><strong>彈性優先</strong>不想綁太久，先短期使用</button>
+              <button class="option" data-value="balanced"><strong>價格與彈性平衡</strong>可以接受 90 天週期</button>
+              <button class="option" data-value="longterm"><strong>長期使用</strong>願意用年訂換較低平均成本</button>
+              <button class="option" data-value="own"><strong>偏好單片擁有</strong>特定作品想收藏、重看</button>
             </div>
           </div>
 
@@ -1007,7 +2109,7 @@
         <aside class="result-card" id="result">
           <div class="kicker">即時建議</div>
           <h3>先回答 3 題</h3>
-          <p>我們會依你的觀看頻率、內容偏好與重看需求，提供方案建議與理由。</p>
+          <p>我們會依你的使用頻率、內容偏好與付費彈性，提供方案建議與理由。</p>
           <div class="metric"><span>觀看方式</span><strong>待評估</strong></div>
           <div class="metric"><span>建議方案</span><strong>待評估</strong></div>
           <div class="metric"><span>推薦原因</span><strong>待評估</strong></div>
@@ -1020,74 +2122,134 @@
     <div class="wrap">
       <div class="section-title">
         <div>
-          <h2>第四步：找到作品後，直接告訴你「這部怎麼看最適合」</h2>
-          <p>這不是另一個方案頁，而是放在「作品詳情頁」裡的付費決策模組。</p>
+          <h2>作品詳情頁的觀看決策</h2>
+          <p>使用者搜尋到作品後，不需要另外詢問機器人；系統直接在作品頁讀取帳號權益，告訴他「現在能不能看」以及下一步怎麼做。</p>
         </div>
       </div>
 
-      <div class="content-flow">
-        <span>搜尋 / 瀏覽作品</span><b>→</b>
-        <span>進入作品詳情頁</span><b>→</b>
-        <span>系統讀取可用觀看方式</span><b>→</b>
-        <span>依目前權益推薦 CTA</span>
+      <div class="detail-flow" aria-label="作品頁觀看決策流程">
+        <span>找到作品</span><b>→</b>
+        <span>讀取目前權益</span><b>→</b>
+        <span>比對此作品可用方式</span><b>→</b>
+        <span>直接給最適合 CTA</span>
       </div>
 
-      <article class="content-card">
-        <div class="poster">示意作品<br>《今晚想看的電影》</div>
-        <div>
-          <div class="content-topline">
+      <article class="movie-detail-demo">
+        <header class="movie-detail-head">
+          <img class="movie-poster" src="assets/spiderman-no-way-home.png" alt="《蜘蛛人：無家日》示意海報">
+          <div class="movie-detail-copy">
+            <span class="prototype-label">作品詳情頁 Prototype</span>
+            <h3>蜘蛛人：無家日</h3>
+            <p>此作品頁示意支援「豪華月租」與「單次付費」。實際方案、價格與觀看期限仍以 MyVideo 當下作品頁為準。</p>
+            <div class="movie-capabilities">
+              <span>豪華月租</span>
+              <span>數位珍藏</span>
+              <span>單片租借</span>
+            </div>
+          </div>
+        </header>
+
+        <div class="entitlement-simulator">
+          <div>
+            <strong>模擬目前帳號權益</strong>
+            <p>正式產品會直接讀取登入帳號；Prototype 用按鈕切換不同情境。</p>
+          </div>
+          <div class="detail-state-buttons">
+            <button class="detail-state-btn active" data-detail-state="none">目前沒有付費方案</button>
+            <button class="detail-state-btn" data-detail-state="luxury">已有豪華月租</button>
+            <button class="detail-state-btn" data-detail-state="channel">只有頻道訂閱</button>
+            <button class="detail-state-btn" data-detail-state="four">只有 4 片自由選</button>
+            <button class="detail-state-btn" data-detail-state="multi">同時有多種權益</button>
+          </div>
+        </div>
+
+        <div class="detail-decision" id="detailDecision">
+          <div class="decision-eyebrow">依目前權益判斷</div>
+          <div class="decision-main">
             <div>
-              <h3 style="font-size:26px;margin:0">這部作品可以怎麼看？</h3>
-              <div class="badge-row">
-                <span class="badge green">豪華月租可看</span>
-                <span class="badge orange">可單片租借</span>
-                <span class="badge yellow">可使用 4 片自由選</span>
+              <strong id="detailDecisionTitle">目前沒有可直接使用的既有權益</strong>
+              <p id="detailDecisionText">這部作品提供豪華月租、數位珍藏與單片租借。你可以依觀看需求選擇，不需要先理解所有 MyVideo 方案。</p>
+            </div>
+            <button class="primary detail-primary-cta" id="detailPrimaryCta" data-action="compare">比較可用方式</button>
+          </div>
+        </div>
+
+        <div class="payment-layout">
+          <section class="payment-column subscription-column" id="luxuryPaymentColumn">
+            <div class="payment-column-head">
+              <div>
+                <span class="column-kicker">訂閱制</span>
+                <h4>豪華月租</h4>
               </div>
+              <p>適合除了這部作品之外，還會持續觀看其他電影、戲劇、動漫、兒童與節目內容的使用者。</p>
             </div>
-          </div>
 
-          <div class="state-box">
-            <strong>先模擬你的目前狀態</strong>
-            <p>實際產品中，系統會直接讀取會員帳號狀態；Prototype 先用按鈕模擬。</p>
-            <div class="state-buttons">
-              <button class="state-btn active" data-state="guest">尚未購買任何方案</button>
-              <button class="state-btn" data-state="subscribed">已訂豪華月租</button>
-              <button class="state-btn" data-state="four">有 4 片自由選額度</button>
-            </div>
-          </div>
+            <div class="detail-plan-list">
+              <button class="detail-plan-row best" type="button" data-plan-route="annual">
+                <div>
+                  <strong>返利黑卡・年訂</strong>
+                  <span>平均每月成本較低，適合長期使用</span>
+                </div>
+                <div class="detail-price">$1,780 <small>/ 365 天</small></div>
+              </button>
 
-          <div class="decision-summary" id="decisionSummary">
-            <span class="decision-label">目前建議</span>
-            <strong>先比較方案，再選擇觀看方式</strong>
-            <p>你目前沒有可直接使用的權益，系統會把「訂閱、單片租借、4 片自由選」放在同一畫面比較。</p>
-          </div>
+              <button class="detail-plan-row" type="button" data-plan-route="quarterly">
+                <div>
+                  <strong>季訂方案</strong>
+                  <span>價格與彈性較平衡</span>
+                </div>
+                <div class="detail-price">$550 <small>/ 90 天</small></div>
+              </button>
 
-          <div class="watch-options" id="watchOptions">
-            <div class="watch-option recommended" data-option="subscription">
-              <div class="option-status">推薦</div>
-              <strong>豪華月租</strong>
-              <small>$250 / 30 天起・適合還會看其他月租內容</small>
-              <button class="primary action-btn" data-action="subscription">查看月租方案</button>
+              <button class="detail-plan-row" type="button" data-plan-route="monthly">
+                <div>
+                  <strong>月訂方案</strong>
+                  <span>適合短期使用或第一次訂閱</span>
+                </div>
+                <div class="detail-price">$250 <small>/ 30 天</small></div>
+              </button>
             </div>
-            <div class="watch-option" data-option="rental">
-              <div class="option-status"></div>
-              <strong>單片租借</strong>
-              <small>$79 / 48 小時・只想看這部最直接</small>
-              <button class="ghost action-btn" data-action="rental">租這部</button>
-            </div>
-            <div class="watch-option" data-option="four">
-              <div class="option-status"></div>
-              <strong>4 片自由選</strong>
-              <small>$250 / 30 天・每期可選 4 部指定電影</small>
-              <button class="ghost action-btn" data-action="four">查看 4 片自由選</button>
-            </div>
-          </div>
+          </section>
 
-          <div class="mvp-note">
-            <strong>MVP 邏輯：</strong>
-            先確認「這部作品支援哪些付費方式」，再讀取「使用者目前擁有哪些權益」；
-            若已有可用權益，就優先顯示「直接觀看 / 使用額度」，沒有權益時才進入方案比較。
-          </div>
+          <section class="payment-column oneoff-column">
+            <div class="payment-column-head">
+              <div>
+                <span class="column-kicker">作品層級交易</span>
+                <h4>單次付費</h4>
+              </div>
+              <p>如果只想看這部作品，不一定需要先訂閱整個片庫。</p>
+            </div>
+
+            <div class="oneoff-list">
+              <button class="oneoff-row" type="button" data-detail-action="purchase">
+                <div>
+                  <span class="oneoff-type">數位珍藏</span>
+                  <strong>購買 4K / HD 數位珍藏版</strong>
+                  <small>購買後可依 MyVideo 當下授權條件長期觀看</small>
+                </div>
+                <div class="oneoff-price"><small>示意</small> $449</div>
+              </button>
+
+              <button class="oneoff-row" type="button" data-detail-action="rental">
+                <div>
+                  <span class="oneoff-type">租借</span>
+                  <strong>租借 4K / HD</strong>
+                  <small>此 Prototype 依你提供的作品頁示意：租借後 7 天內開始播放，播放後於租借期間內依頁面規則觀看</small>
+                </div>
+                <div class="oneoff-price"><small>示意</small> $59 <small>/ 48 小時</small></div>
+              </button>
+            </div>
+
+            <div class="oneoff-note">
+              <strong>為什麼這裡不顯示「4 片自由選」？</strong>
+              <p>因為這個作品頁目前沒有顯示該方式。系統只呈現作品實際支援的觀看方式，不因使用者持有某項權益就自行推定可使用。</p>
+            </div>
+          </section>
+        </div>
+
+        <div class="detail-principle">
+          <strong>設計原則：</strong>
+          先回答「你現在能不能看」，再顯示真正可用的交易方式；已有可用權益時優先「立即觀看」，避免重複付費。
         </div>
       </article>
     </div>
@@ -1098,7 +2260,49 @@
   </div>
 </main>
 
+
+  <div class="floating-actions" aria-label="快速操作">
+    <button class="float-btn top" type="button" onclick="goTop()" aria-label="回到最上方" title="回到最上方">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 19V6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M6.5 11.5L12 6l5.5 5.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="prototype-toast" id="prototypeToast" role="status" aria-live="polite">
+    <strong id="prototypeToastTitle"></strong>
+    <span id="prototypeToastText"></span>
+  </div>
+
 <script>
+
+  // Offset-aware navigation: keep every section title visible below the sticky header.
+  function scrollToSection(selector, extraGap = 18){
+    const target = typeof selector === 'string' ? document.querySelector(selector) : selector;
+    if(!target) return;
+
+    const header = document.querySelector('.topbar');
+    const headerHeight = header ? header.getBoundingClientRect().height : 0;
+    const y = target.getBoundingClientRect().top + window.scrollY - headerHeight - extraGap;
+
+    window.scrollTo({
+      top: Math.max(0, y),
+      behavior: 'smooth'
+    });
+  }
+
+  let toastTimer;
+  function showToast(title, message){
+    const toast = document.getElementById('prototypeToast');
+    if(!toast) return;
+    document.getElementById('prototypeToastTitle').textContent = title;
+    document.getElementById('prototypeToastText').textContent = message;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(()=>toast.classList.remove('show'), 3600);
+  }
+
   // Tabs + Step 1 / Step 2 linkage
   function activatePlanMode(mode, shouldScroll = false){
     // Step 2 tabs
@@ -1121,18 +2325,34 @@
     });
 
     if(shouldScroll){
-      document.querySelector('#plans').scrollIntoView({
-        behavior:'smooth',
-        block:'start'
-      });
+      scrollToSection('#plans');
     }
   }
 
+
+  function activateSubscriptionFamily(family){
+    document.querySelectorAll('.subscription-family-btn').forEach(btn=>{
+      const active = btn.dataset.subFamily === family;
+      btn.classList.toggle('active', active);
+      btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+    document.querySelectorAll('.subscription-family-panel').forEach(panel=>{
+      panel.hidden = panel.dataset.subPanel !== family;
+    });
+  }
+
+  document.querySelectorAll('.subscription-family-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>activateSubscriptionFamily(btn.dataset.subFamily));
+  });
+
   // Step 3 recommendation → Step 2 exact plan
   const planRoute = {
-    monthly:   { mode:'sub',  key:'monthly' },
-    quarterly: { mode:'sub',  key:'quarterly' },
-    annual:    { mode:'sub',  key:'annual' },
+    monthly:   { mode:'sub', family:'luxury', key:'monthly' },
+    quarterly: { mode:'sub', family:'luxury', key:'quarterly' },
+    annual:    { mode:'sub', family:'luxury', key:'annual' },
+    'channel-monthly': { mode:'sub', family:'channel', key:'channel-monthly' },
+    'channel-quarterly': { mode:'sub', family:'channel', key:'channel-quarterly' },
+    'channel-annual': { mode:'sub', family:'channel', key:'channel-annual' },
     four:      { mode:'rent', key:'four' },
     rental:    { mode:'rent', key:'rental' },
     digital:   { mode:'buy',  key:'digital' }
@@ -1144,6 +2364,7 @@
 
     // 切換第二區塊對應的觀看方式 Tab。
     activatePlanMode(route.mode, false);
+    if(route.family) activateSubscriptionFamily(route.family);
 
     // 清除上一個推薦聚焦狀態。
     document.querySelectorAll('.plan.plan-focus, .plan.plan-focus-settled').forEach(card=>{
@@ -1185,7 +2406,7 @@
     document.querySelectorAll('.plan.plan-focus, .plan.plan-focus-settled').forEach(card=>{
       card.classList.remove('plan-focus','plan-focus-settled');
     });
-    alert(`你選擇了：${name}\n${price}\n\nPrototype 中下一步可接：查看內容範圍 → 確認權益 → 結帳。`);
+    showToast(`已選擇：${name}`, `${price}。Prototype 下一步可接「查看內容範圍 → 確認權益 → 結帳」。`);
   }
 
 
@@ -1246,50 +2467,71 @@
   function calculateRecommendation(){
     const freq = answers[1];
     const pref = answers[2];
-    const repeat = answers[3];
+    const payStyle = answers[3];
     let plan, mode, reason, cost, alt, routeKey;
 
-    if(repeat === 'yes' && freq === 'low'){
+    if(pref === 'channel'){
+      mode = '訂閱・頻道服務';
+      if(payStyle === 'longterm' || freq === 'daily'){
+        plan = '頻道訂閱・年訂';
+        reason = '你主要需要賽事、即時新聞或娛樂頻道，而且使用頻率高／偏好長期方案，因此年訂較符合使用情境。';
+        cost = '$1,320 / 365 天';
+        alt = '若只想先試用頻道內容，可從月訂開始。';
+        routeKey = 'channel-annual';
+      }else if(payStyle === 'balanced' || freq === 'high'){
+        plan = '頻道訂閱・季訂';
+        reason = '你主要使用頻道內容，希望兼顧價格與彈性，90 天週期較適合中期觀看。';
+        cost = '$360 / 90 天';
+        alt = '若觀看需求只集中在單一月份，可改月訂。';
+        routeKey = 'channel-quarterly';
+      }else{
+        plan = '頻道訂閱・月訂';
+        reason = '你主要想看頻道內容，但目前偏好短期、彈性的使用方式，因此先從月訂最容易評估是否符合需求。';
+        cost = '$128 / 30 天';
+        alt = '若後續固定觀看，可再改季訂或年訂。';
+        routeKey = 'channel-monthly';
+      }
+    }else if(payStyle === 'own' && pref === 'movie'){
       mode = '購買';
-      plan = '數位珍藏（針對常重看的作品）';
-      reason = '你看片頻率不高，但有明確重看需求；對喜歡的單一作品，購買比反覆租借更直覺。';
+      plan = '數位珍藏（若該作品支援）';
+      reason = '你偏好單片擁有，而且需求集中在特定電影；若作品提供數位珍藏，會比反覆租借更符合收藏需求。';
       cost = '依作品定價';
-      alt = '其他偶爾想看的內容可搭配單片租借。';
+      alt = '若只看一次，可改用單片租借。';
       routeKey = 'digital';
-    } else if((freq === 'mid') && (pref === 'movie')){
+    }else if(freq === 'mid' && pref === 'movie'){
       mode = '租借';
       plan = '電影月租 4 片自由選';
-      reason = '你每月大約看 3–4 部電影，4 片自由選可把每部平均成本壓到約 $62.5。';
+      reason = '你固定觀看特定電影；若想看的作品符合自由選資格，4 片自由選可一次取得 4 部指定租借電影額度。';
       cost = '$250 / 30 天';
-      alt = '若只看 1–2 部，改用單片租借會更彈性。';
+      alt = '若想看的作品不在自由選資格內，仍需改用單片租借。';
       routeKey = 'four';
-    } else if(freq === 'low' && pref === 'movie'){
+    }else if(freq === 'low' && pref === 'movie'){
       mode = '租借';
       plan = '單片租借';
-      reason = '你看片頻率低，而且多半只為特定電影而來，單片付費可避免固定週期支出。';
+      reason = '你使用頻率低，而且多半只為特定電影而來，作品層級付費可避免固定週期支出。';
       cost = '依作品定價';
-      alt = '若每月開始穩定看 3–4 部，再考慮 4 片自由選。';
+      alt = '若每月固定看多部指定電影，可再比較 4 片自由選資格。';
       routeKey = 'rental';
-    } else if(freq === 'daily'){
-      mode = '訂閱';
+    }else if(payStyle === 'longterm' || freq === 'daily'){
+      mode = '訂閱・隨選影音';
       plan = '返利黑卡・年訂';
-      reason = '你屬於高頻使用者，長期訂閱的平均月成本最低，適合固定使用 MyVideo。';
-      cost = '約 $148 / 月';
-      alt = '若還不確定會使用滿一年，可先從季訂開始。';
+      reason = '你以隨選影音為主，而且偏好長期或高頻使用；年訂適合固定使用 MyVideo 的情境。';
+      cost = '$1,780 / 365 天';
+      alt = '若尚未確定長期使用，可先從季訂開始。';
       routeKey = 'annual';
-    } else if(freq === 'high' || pref === 'series' || pref === 'family'){
-      mode = '訂閱';
+    }else if(payStyle === 'balanced' || freq === 'high' || pref === 'series' || pref === 'family'){
+      mode = '訂閱・隨選影音';
       plan = '豪華月租・季訂';
-      reason = '你有持續追劇 / 固定看片需求，季訂兼顧價格與彈性，比逐片租借更適合。';
-      cost = '約 $184 / 月';
-      alt = '如果只是想短期試用，可改選月訂。';
+      reason = '你主要看隨選影音並有持續使用需求，季訂較能兼顧價格與彈性。';
+      cost = '$550 / 90 天';
+      alt = '如果只是短期體驗，可改選月訂。';
       routeKey = 'quarterly';
-    } else {
-      mode = '訂閱';
+    }else{
+      mode = '訂閱・隨選影音';
       plan = '豪華月租・月訂';
-      reason = '你的需求較平均，先用月訂建立使用習慣，之後再依觀看頻率升級季訂或年訂。';
+      reason = '你的需求目前較彈性，先用月訂確認隨選影音內容是否符合習慣，再決定是否改成較長週期。';
       cost = '$250 / 30 天';
-      alt = '若主要變成特定電影觀看，可改用租借型方案。';
+      alt = '若主要需求變成賽事、新聞或頻道內容，應改比較頻道訂閱。';
       routeKey = 'monthly';
     }
 
@@ -1308,87 +2550,96 @@
   }
 
 
-  // Section 4 MVP: content-page payment decision logic
-  const section4States = {
-    guest: {
-      title: '先比較方案，再選擇觀看方式',
-      desc: '你目前沒有可直接使用的權益，系統會把「訂閱、單片租借、4 片自由選」放在同一畫面比較。',
-      recommended: 'subscription',
-      labels: {
-        subscription: ['推薦','查看月租方案'],
-        rental: ['', '租這部'],
-        four: ['', '查看 4 片自由選']
-      }
+  // Work detail decision logic: read entitlement first, then expose only relevant actions.
+  const detailStates = {
+    none: {
+      title: '目前沒有可直接使用的既有權益',
+      text: '這部作品提供豪華月租、數位珍藏與單片租借。你可以依觀看需求選擇，不需要先理解所有 MyVideo 方案。',
+      cta: '比較可用方式',
+      action: 'compare',
+      highlight: null
     },
-    subscribed: {
-      title: '你已經可以直接看這部',
-      desc: '此作品包含在豪華月租片庫中，不需要再次付款；主 CTA 直接改成「立即觀看」。',
-      recommended: 'subscription',
-      labels: {
-        subscription: ['已包含','立即觀看'],
-        rental: ['', '仍要單片租借'],
-        four: ['', '查看 4 片自由選']
-      }
+    luxury: {
+      title: '你的豪華月租已涵蓋這部作品',
+      text: '系統確認此示意作品可透過豪華月租觀看，因此優先提供「立即觀看」，不再引導你重複租借或購買。',
+      cta: '立即觀看',
+      action: 'watch',
+      highlight: 'luxury'
+    },
+    channel: {
+      title: '頻道訂閱無法直接觀看這部隨選電影',
+      text: '頻道訂閱主要對應賽事、新聞與娛樂頻道；這部作品屬於隨選影音，請改用豪華月租或單次付費。',
+      cta: '查看可用方式',
+      action: 'compare',
+      highlight: null
     },
     four: {
-      title: '這部可使用你的 4 片自由選額度',
-      desc: '系統辨識此作品符合 4 片自由選資格，優先建議使用既有額度，不再引導重複付費。',
-      recommended: 'four',
-      labels: {
-        subscription: ['', '查看月租方案'],
-        rental: ['', '改用單片租借'],
-        four: ['可用現有額度','使用 1 部額度觀看']
-      }
+      title: '這個作品頁目前沒有顯示 4 片自由選',
+      text: '即使帳號持有 4 片自由選額度，也不能直接假設所有租借片都適用。此處只依作品頁實際提供的觀看方式判斷。',
+      cta: '查看可用方式',
+      action: 'compare',
+      highlight: null
+    },
+    multi: {
+      title: '優先使用已包含的豪華月租權益',
+      text: '當帳號同時持有多種權益時，系統會優先選擇不需額外付款的方式；此示意作品由豪華月租直接涵蓋。',
+      cta: '立即觀看',
+      action: 'watch',
+      highlight: 'luxury'
     }
   };
 
-  function applyContentDecision(state){
-    const cfg = section4States[state];
-    const summary = document.getElementById('decisionSummary');
-    if(!summary || !cfg) return;
+  function applyDetailState(state){
+    const cfg = detailStates[state];
+    if(!cfg) return;
 
-    summary.innerHTML = `
-      <span class="decision-label">目前建議</span>
-      <strong>${cfg.title}</strong>
-      <p>${cfg.desc}</p>
-    `;
+    document.getElementById('detailDecisionTitle').textContent = cfg.title;
+    document.getElementById('detailDecisionText').textContent = cfg.text;
 
-    document.querySelectorAll('#watchOptions .watch-option').forEach(card=>{
-      const key = card.dataset.option;
-      const isReco = key === cfg.recommended;
-      card.classList.toggle('recommended', isReco);
-      card.querySelector('.option-status').textContent = cfg.labels[key][0];
-      const btn = card.querySelector('.action-btn');
-      btn.textContent = cfg.labels[key][1];
-      btn.className = isReco ? 'primary action-btn' : 'ghost action-btn';
-      btn.dataset.action = key;
-    });
+    const cta = document.getElementById('detailPrimaryCta');
+    cta.textContent = cfg.cta;
+    cta.dataset.action = cfg.action;
+
+    document.querySelectorAll('.payment-column').forEach(x=>x.classList.remove('highlighted'));
+    if(cfg.highlight === 'luxury'){
+      document.getElementById('luxuryPaymentColumn')?.classList.add('highlighted');
+    }
   }
 
-  document.querySelectorAll('.state-btn').forEach(btn=>{
+  document.querySelectorAll('.detail-state-btn').forEach(btn=>{
     btn.addEventListener('click', ()=>{
-      document.querySelectorAll('.state-btn').forEach(x=>x.classList.remove('active'));
+      document.querySelectorAll('.detail-state-btn').forEach(x=>x.classList.remove('active'));
       btn.classList.add('active');
-      applyContentDecision(btn.dataset.state);
+      applyDetailState(btn.dataset.detailState);
     });
   });
 
-  document.querySelectorAll('#watchOptions .action-btn').forEach(btn=>{
+  document.getElementById('detailPrimaryCta')?.addEventListener('click', ()=>{
+    const action = document.getElementById('detailPrimaryCta').dataset.action;
+    if(action === 'watch'){
+      showToast('可直接觀看','此 Prototype 會直接進入播放器，不再要求使用者重新選擇付費方式。');
+    }else{
+      document.querySelector('.payment-layout')?.scrollIntoView({behavior:'smooth',block:'center'});
+    }
+  });
+
+  document.querySelectorAll('[data-plan-route]').forEach(btn=>{
     btn.addEventListener('click', ()=>{
-      const action = btn.dataset.action;
-      const activeState = document.querySelector('.state-btn.active')?.dataset.state || 'guest';
-      if(activeState === 'subscribed' && action === 'subscription'){
-        alert('MVP：直接進入播放器。\\n因為這部作品已包含在你的豪華月租權益中。');
-      }else if(activeState === 'four' && action === 'four'){
-        alert('MVP：確認扣除 1 部「4 片自由選」額度 → 成功後開放觀看。');
-      }else if(action === 'rental'){
-        alert('MVP：進入單片租借確認頁，只顯示這部作品的租借價格與觀看期限。');
-      }else if(action === 'subscription'){
-        document.querySelector('#plans').scrollIntoView({behavior:'smooth', block:'start'});
-        activatePlanMode('sub', false);
-      }else if(action === 'four'){
-        document.querySelector('#plans').scrollIntoView({behavior:'smooth', block:'start'});
-        activatePlanMode('rent', false);
+      activatePlanMode('sub', false);
+      const subTab = document.querySelector('[data-subplan="luxury"]');
+      subTab?.click();
+      scrollToSection('#plans');
+      setTimeout(()=>focusPlan(btn.dataset.planRoute),420);
+    });
+  });
+
+  document.querySelectorAll('[data-detail-action]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const action = btn.dataset.detailAction;
+      if(action === 'rental'){
+        showToast('單片租借','正式產品會以作品頁當下顯示的租金與觀看期限為準，再由使用者確認付款。');
+      }else{
+        showToast('數位珍藏','正式產品會顯示此作品目前的數位珍藏價格與授權條件，再由使用者確認購買。');
       }
     });
   });
@@ -1401,13 +2652,20 @@
     document.getElementById('result').innerHTML = `
       <div class="kicker">即時建議</div>
       <h3>先回答 3 題</h3>
-      <p>我們會依你的觀看頻率、內容偏好與重看需求，提供方案建議與理由。</p>
+      <p>我們會依你的使用頻率、內容偏好與付費彈性，提供方案建議與理由。</p>
       <div class="metric"><span>觀看方式</span><strong>待評估</strong></div>
       <div class="metric"><span>建議方案</span><strong>待評估</strong></div>
       <div class="metric"><span>推薦原因</span><strong>待評估</strong></div>
     `;
     showQuestion();
   }
+
+  // Floating actions
+  function goTop(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+
 </script>
 </body>
 </html>
